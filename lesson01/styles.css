@@ -1,0 +1,158 @@
+/* Page styles */
+
+:root{
+    --bg: #f7fff8;
+    --ink: #183126;
+    --muted: #355d49;
+    --card: #ffffff;
+    --leaf-1: #6fd39b;
+    --leaf-2: #4fb67f;
+    --ring: #a6ecc7;
+    --shadow: 0 10px 24px rgba(0,0,0,.06);
+  }
+
+  
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg: #0d1a14;
+      --ink: #eafff2;
+      --muted: #cceadc;
+      --card: #10231b;
+      --leaf-1: #4fb67f;
+      --leaf-2: #6fd39b;
+      --ring: #66e2ad;
+      --shadow: 0 10px 28px rgba(0,0,0,.35);
+    }
+  }
+
+
+  
+  /* Base */
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body{
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Noto Sans;
+    color: var(--ink);
+    line-height: 1.65;
+    background:
+      radial-gradient(60rem 40rem at 0% 0%, rgba(111,211,155,.14), transparent 60%),
+      radial-gradient(50rem 30rem at 100% 10%, rgba(79,182,127,.14), transparent 60%),
+      linear-gradient(#f0fff4, var(--bg));
+  }
+  
+
+
+  /* Skip link */
+  .skip-link{
+    position: absolute; left: -9999px; top: auto;
+    width: 1px; height: 1px; overflow: hidden;
+  }
+
+  .skip-link:focus{
+    position: fixed; left: 1rem; top: 1rem; padding: .6rem .9rem;
+    background: var(--card); color: var(--ink);
+    border: 2px solid var(--leaf-2); border-radius: .6rem;
+    z-index: 1000;
+  }
+  
+
+  /* Hero */
+  .hero{
+    text-align: center;
+    padding: clamp(3rem, 8vw, 6rem) 1rem;
+    color: #fff;
+    background:
+      radial-gradient(45rem 20rem at 10% 0%, rgba(255,255,255,.15), transparent 60%),
+      linear-gradient(135deg, var(--leaf-1), var(--leaf-2));
+  }
+
+
+  .brand{
+    margin: 0 0 .4rem;
+    font-weight: 800;
+    letter-spacing: .3px;
+    font-size: clamp(2rem, 5.5vw, 3.4rem);
+    text-shadow: 0 8px 20px rgba(0,0,0,.15);
+  }
+
+
+  .brand span{ white-space: nowrap; }
+  .subtitle{
+    margin: 0 auto; max-width: 60ch; opacity: .95;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+  }
+  
+  /* Layout */
+  .container{
+    width: min(100% - 2rem, 960px);
+    margin: -2.2rem auto 3.5rem;
+  }
+
+  
+  .divider{
+    width: 100%; text-align: center; margin: 1rem auto;
+    font-size: 1.3rem; opacity: .9;
+  }
+
+  .divider::before, .divider::after{
+    content: ""; display: inline-block; width: 26%; max-width: 200px; height: 10px;
+    margin: 0 .5rem; border-top: 2px dashed #82cfaa; border-radius: 999px;
+  }
+  
+  /* Cards */
+  .card{
+    background: var(--card);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,.05);
+    padding: clamp(1rem, 3vw, 1.6rem);
+  }
+
+  .card + .card{ margin-top: 1.1rem; }
+  h2{ margin: 0 .1rem .6rem; color: var(--leaf-2); font-size: clamp(1.25rem, 3.1vw, 1.6rem); }
+  
+  /* Split layout */
+  .split{
+    display: grid; gap: 1rem; grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 760px){
+    .split{ grid-template-columns: 320px 1fr; align-items: center; }
+  }
+  
+  /* My Portrait Section */
+  .portrait{ margin: 0; text-align: center; }
+  .portrait img{
+    width: 100%; height: auto; border-radius: 24px;
+    border: 3px solid #aee9c9; box-shadow: var(--shadow);
+  }
+  .portrait figcaption{ font-size: .9rem; color: var(--muted); margin-top: .4rem; }
+  
+  .graphic{ margin: 1rem 0 0; }
+  .graphic img{
+    width: 100%; height: auto; border-radius: 18px;
+    border: 2px solid #9fe2bf; box-shadow: var(--shadow);
+  }
+  
+  /* Text & links */
+  p{ margin: .65rem 0 0; }
+  a{ color: var(--leaf-2); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  
+  /* leaf list */
+  .leaf-list{ list-style: none; padding: 0; margin: .9rem 0 0; }
+  .leaf-list li{ padding-left: 1.7rem; position: relative; margin: .35rem 0; }
+  .leaf-list li::before{ content: "🍃"; position: absolute; left: 0; top: .05rem; font-size: 1.05rem; }
+  
+  /* Footer */
+  .footer{ text-align: center; padding: 2rem 1rem 3rem; color: var(--muted); }
+  .tiny{ font-size: .9rem; opacity: .85; }
+  
+  /* Focus ring */
+  :where(a, button, [tabindex]):focus{
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+  

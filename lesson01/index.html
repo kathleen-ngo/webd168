@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Biography page for [Your Name]." />
+  <title>Kathleen Ngo Biography</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the content</a>
+
+  <!-- Header -->
+  <header class="hero" role="banner">
+    <h1 class="brand">Hi, I’m <span>Kathleen</span></h1>
+
+  <main id="main" class="container" role="main">
+
+    <!-- About Me (intro + portrait) -->
+    <section class="card theme-mint" aria-labelledby="about">
+      <h2 id="about" class="section-title">About Me</h2>
+      <div class="split">
+        <figure class="portrait">
+          <img src="images/webd_portrait.jpg" alt="A little portrait of me!" width="420" height="420" loading="lazy" />
+          <figcaption>I'm happiest outdoors with fresh air surrounding by blooming flowers or trees.</figcaption>
+        </figure>
+        <p>
+          Hello, I’m Kathleen! I am a Computer Science student who wants to contribute to
+          engineering with practical programming skills. I hope to build applications
+          and tools that make life easier and more accessible for people
+          who need support while I keep learning and improving my development skills.
+        </p>
+      </div>
+    </section>
+
+    <!-- Why I'm Taking This Course -->
+    <section class="card theme-blush" aria-labelledby="why">
+      <h2 id="why" class="section-title">Why I’m Taking This Course</h2>
+      <p>
+        I want to learn more about how HTML and CSS are used in real web development.
+        I’ve worked with the basics before and taught myself a lot on my own, but my
+        CS coursework followed a different path. Now I’m taking this class to see where
+        I’m at, fill in gaps, and strengthen my frontend skills and tools so I can
+        build cleaner and more reliable pages and move into modern UI work.
+      </p>
+    </section>
+
+    <!-- What I Hope to Gain -->
+    <section class="card theme-sky" aria-labelledby="goals">
+      <h2 id="goals" class="section-title">What I Hope to Gain</h2>
+      <p>
+        My goal is a steady workflow: brainstorm the content and purpose, 
+        do a sample layout of what should be expected, and style it with care. 
+        I want to feel comfortable making small, polished pages that look good 
+        on phones and laptops, with consistent and flexbilible spacing and readable type. 
+        Sometimes keeping certain things simple can enhance user-friendliness.  
+      </p>
+    </section>
+
+    <!-- Prior Experience -->
+    <section class="card theme-sand" aria-labelledby="experience">
+      <h2 id="experience" class="section-title">Prior Experience</h2>
+      <p>
+        I love frontend engineering. I’ve used HTML and CSS many times to build my
+        designs in practice projects, and I often add JavaScript to enhance features
+        and interactions. CSS is always challenging to me until now as it gives me 
+        problems with its specificity and the order of rules can be confusing. Hence, 
+        I want to focus on clearer structure and a simple consistent style that I 
+        can always refer and track my past work.
+      </p>
+    </section>
+
+    <!-- Hobbies (list) -->
+    <section class="card theme-lavender" aria-labelledby="hobbies">
+      <h2 id="hobbies" class="section-title">Hobbies</h2>
+      <p>
+        Here are a few simple things that make my week feel balanced and my energy to be restored:
+      </p>
+      <ul class="leaf-list">
+        <li>Going on a hike at different trails and national parks</li>
+        <li>Sketching architectural designs and landscapes</li>
+        <li>Trying new coffee and food spots</li>
+        <li>Solving puzzles and brain games</li>
+        <li>Listening to mellow playlists while studying</li>
+      </ul>
+
+      <figure class="graphic">
+        <img src="images/webd_nature.jpg" alt="Soft green forest with light through leaves" width="900" height="600" loading="lazy" />
+        <figcaption>Calm places helps refresh my mind and my love for nature allows me to appreciate the great things we have around us. 
+            As mentioned, I love exploring nature on different trails and this was my trip at Big Sur. 
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <p>Contact: <a href="mailto:kngo012@student.sdccd.edu">kngo012@student.sdccd.edu</a></p>
+    <p class="tiny">© <span id="year"></span> Kathleen Ngo </p>
+  </footer>
+
+  <script>
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
