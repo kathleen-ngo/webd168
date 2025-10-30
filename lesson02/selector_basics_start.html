@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Selector Basics</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Varela+Round"
+    />
+    <style>
+      body {
+        background-color: rgb(50,122,167); 
+        padding: 0 20px 20px 20px; /* p0-20-20-20 */
+        margin: 0; /* m0 */ 
+      }
+      p {
+        color: rgba(255, 255, 255, .6); /* a after rgb makes it transparent with 60% opacity */ 
+        font-size: 1em; /* fz1em */
+        font-family: "Varela Round", Arial, Helvetica, sans-serif;
+      }
+      h1, 
+      h2, 
+      h3 {
+        color: rgb(255, 255, 255);
+        font-family: Arial, "Palatino Linotype", Times, serif;
+        border-bottom: 2px solid rgb(87, 185, 178); /* bb2-solid-rgb */ 
+        padding-top: 10px; /* pt10 */
+        padding-bottom: 5px; /* pb5 */
+      }
+      h1 {
+        font-size: 2em;
+      }
+      #logo {
+        font-family: Baskerville, Palatino, sans-serif;
+        font-size: 2em; /* fz2m */ 
+        color: rgba(255, 255, 255, .8); /* c: rgba */ 
+        font-style: italic; /* fsi */
+        text-align: center; /* tac */ 
+        margin-bottom: 30px; /* mb30 */ 
+        background-color: rgb(191, 91, 116); /* bgc:rgb */ 
+        border-radius: 0 0 10px 10px; /* bdrs0-0-10-10 */
+        padding: 10px;
+      }
+      .note {
+        color: #000;
+        border: 2px solid #fff; /* bd2-solid-#fff for white color*/ 
+        background-color: rgb(69, 189, 102); /* bgc:rgb */ 
+        margin-top: 25px; /* mt25 */
+        margin-bottom: 35px; /* mb35 */
+        padding: 20px;
+      }
+      .note strong {
+        color: #fc6512; /* c#fc6512 */
+      }
+      article {
+        max-width: 760px; /* maw760 */
+        margin: 0 auto; /* m0-auto - this tells how much to add to the left and right side to article tag */
+      }
+      h1+p { /*Applies to any paragraph with the h1 tag, known as an adjacent sibling selector */ 
+        color: rgb(255, 255, 255); 
+        font-size: 1.2em;
+        line-height: 140%; /*lh140%*/ /* this controls between lines and paragraphs (ledding)*/ 
+      }
+      a[title="css"] {  /* make the first-paragraph CSS link green using an attribute selector */
+        color: green;
+        text-decoration-color: green;
+      }
+      article > h3:nth-of-type(1) { /* make the first h3 on the page italic ("Not Me!") */
+        font-style: italic;
+      }
+      article > h3:nth-of-type(2) {  /* italicize the second h3 inside article ("Me Neither!") */
+        font-style: italic;
+      }
+      .notme-heading { /* custom styles for the "Not Me!" h3 */
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        color: #1d4ed8;
+        border-bottom: 2px solid #1d4ed8; /* override the default h3 border color */ 
+        display: inline-block;
+        padding-bottom: .1rem;
+      } 
+      /*
+      .notme-heading {
+        color: #ffffff;
+        text-shadow: 0 2px 0 rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.25);
+        letter-spacing: .03em;
+      }
+      */ 
+
+      article :is(h2, h3) {
+        letter-spacing: .02em;            /* subtle and harmless */
+      }
+      article :where(h3) {  /* :where() → zero-specificity helper; easy to override later */
+        margin-top: 1rem;                  /* gentle spacing for all h3s in article */
+      }
+      p:has(> a[title="css"]) { /* :has() → style a parent based on its child; highlights the first paragraph
+                                only when it contains the CSS link with title="css" */
+        font-weight: 600;                 /* mild emphasis so it’s visible but not too much */
+      }
+
+    </style>
+  </head>
+  <body>
+    <header><div id="logo">CSS: The Missing Manual</div></header>
+
+    <article>
+      <!-- The article element is intended to present an independent entry that could stand on its own. -->
+      <h1>The Amazing World of CSS</h1>
+      <p>
+        <strong><a href="/en-US/docs/Glossary/CSS" title="css">CSS</a></strong> (Cascading
+        Style Sheets) allows you to create great-looking web pages. Cascading
+        Style Sheets (CSS) is a style sheet language used for describing the
+        presentation of a document written in a markup language such as HTML.
+        CSS is a cornerstone technology of the World Wide Web, alongside HTML
+        and JavaScript.
+      </p>
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+        illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+        explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+        odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam
+        eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+        voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam
+        corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
+        quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
+        voluptas nulla pariatur?
+      </p>
+      <p class="note">
+        <strong>NOTE:</strong> Ut enim ad minima veniam, quis nostrum
+        exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
+        commodi consequatur?
+      </p>
+
+      <h2>Who Knew CSS Had Such Power?</h2>
+      <p>
+        Separation of formatting and content also makes it feasible to present
+        the same markup page in different styles for different rendering
+        methods, such as on-screen, in print, by voice (via speech-based browser
+        or screen reader), and on Braille-based tactile devices. CSS also has
+        rules for alternate formatting if the content is accessed on a mobile
+        device.
+      </p>
+      <p class="note">
+        <strong>NOTE:</strong> Ut enim ad minima veniam, quis nostrum
+        exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
+        commodi consequatur?
+      </p>
+
+      <h3 class="notme-heading">Not Me!</h3>
+      <p>
+        I feel a lot more comfortable with CSS after Lesson 2. I experienced with selectors like 
+        type, class, ID, descendant, child, and attribute which helped me see how specificity and 
+        the cascade really work. Chapter 3 of <em>CSS: The Missing Manual</em> made the split clear 
+        where HTML holds the structure and CSS handles the look. Now I pick classes or IDs on purpose, 
+        use attribute selectors when I need to style one link, and reach for the nth of type selector 
+        to hit only the second heading. I also tried the new pseudo classes is, where, and has to 
+        keep selectors short without adding weight. I love how there are shortcuts for margin and 
+        padding, RGBA for softer color, and editor snippets because it saved me a lot time. DevTools 
+        let me check computed styles and spot overrides so fast and I can target what I want with less 
+        trial and error.
+      </p>
+
+      <h3>Me Neither!</h3>
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+        illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+        explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+        odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+        quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam
+        eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+        voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam
+        corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
+        quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
+        voluptas nulla pariatur?
+      </p>
+    </article>
+  </body>
+</html>
