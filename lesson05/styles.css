@@ -1,0 +1,206 @@
+* {
+    /* Reset margin and padding for all elements */
+    margin: 0;
+    padding: 0;
+    /* Use border-box model for all elements so padding and border are included in the element's total width/height */
+    box-sizing: border-box;
+}
+
+/* Basic styles for the root element and body */
+html {
+    /* Set base font size to 100%, which is 16px by default */
+    font-size: 100%;
+    /* Line height of 1.5 for readability */
+    line-height: 1.5; /* 1.5 times the current font size (16 x 1.5)*/ 
+}
+
+body {
+    /* Apply the Google Font "Source Sans Pro" to the entire body */
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Main container for the content section */
+section {
+    display: flex; /* df */ 
+    flex-wrap: wrap; /* Allows items inside to be wrapped if needed on smaller screens */
+    max-width: 1200px;
+    /* 
+    Margin 0 sets the top and bottom to zero, removing any default space above and 
+    below the element. The auto for the left and right margin causes the browser to 
+    automatically calculate equal margins on both sides, centering the elements horizontally. 
+    Use this style when you want to center a container within its parents as long as the 
+    element has a defined width. 
+    */ 
+    margin: 0 auto; 
+    padding: 2em;
+
+}
+
+/* Styles for the aside (sidebar) element */
+aside {
+    /* Flex grow 1n (item can grow and take up any space equally with the other items that 
+    have the same flex grow, flex shrink 1 (item can shrink if necessary just like the same
+    with the other items that have the same flex shrink, flex basis 25% means the items will 
+    initially take up 25% of the container's width before any growing or shrinking occurs
+    */ 
+    flex: 1 1 25%; 
+    background-color: #ededed;
+    padding: 1.25rem; /* p1.25rem */ 
+    margin-left: 1rem;
+
+    /* Add these globally (moved out of the media query) */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+aside p {
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Styles for the article element */
+article {
+   flex: 1 1 65%; 
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%; /* maw100p */ 
+    height: auto; /* h:a */ 
+    margin-right: 1rem; /* mr1rem */
+    margin-bottom: 1rem; /* mb1rem */ 
+    float: left;
+    padding-right: 1rem;
+}
+
+/* Heading styles */
+h1 {
+   font-size: 2.5rem;
+   margin-bottom: 0.5rem; /* add space below the heading and also helps align this with the entire grid with other texts */
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+/* Paragraph styles */
+p {
+   margin-bottom: 1.5rem;
+}
+
+/* Media Queries */
+
+/* Media query for screens smaller than or equal to 768px */
+@media (max-width: 768px) {
+
+    /* Stack the aside and article elements vertically on small screens */
+    section {
+        flex-direction: column;
+    }
+
+    /* Move aside to the bottom by changing its order */
+    aside {
+        flex: 1 1 100%;
+        margin-left: 0; /* remove the left margin */ 
+        width: 80%; /* put a fixed width for the aside on smaller screens */ 
+        margin: 0 auto;
+        padding: 1.5rem;
+        /* border-radius and box-shadow now live in Global Styles */
+    }
+
+    /* Make the article take up the full width */
+    article {
+        flex: 1 1 100%; /* Makes article takes up the whole width for screen size <= 760 pixels */
+    }
+}
+
+/* Media query for screens smaller than or equal to 480px (extra small screens) */
+@media (max-width: 480px) {
+
+    /* Decrease the font size of the main heading for smaller screens */
+    h1 {
+        font-size: 2rem;
+    }
+
+    /* Decrease the font size of subheadings for smaller screens */
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    /* Decrease the font size of paragraphs for smaller screens */
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+/* Added more styling for fun besides grading criterias */ 
+
+:root{
+  /* Tweakable accents */
+    --poem-bg-top: #e9f6ff;     /* Brighter sky blue */
+    --poem-bg-bottom: #e9fbf6;  /* Soft mint */
+    --poem-border: rgba(42,167,200,.35);
+    --poem-ribbon-a: #2aa7c8;   /* Aqua */
+    --poem-ribbon-b: #6fd6c3;   /* Mint */
+    --bar-aqua: #5ecadf;
+    --bar-pink: #f39acb;
+}
+
+
+/* Make the poem panel stand out a bit more (color only) */
+aside {
+    position: relative; /* for the ribbon */
+    background: linear-gradient(180deg, var(--poem-bg-top), var(--poem-bg-bottom)) !important;
+    border: 1px solid var(--poem-border) !important;
+    box-shadow: 0 12px 28px rgba(21,40,56,.12) !important;  /* a touch stronger */
+}
+
+
+/* Slim gradient ribbon on the left edge (doesn't affect layout) */
+aside::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 8px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background: linear-gradient(180deg, var(--poem-ribbon-a), var(--poem-ribbon-b));
+  pointer-events: none;
+  opacity: .95;
+}
+
+
+h1, h2 { position: relative; }
+
+
+/* Bars sit *inside* the heading’s bottom margin, so the grid stays aligned */
+h1::after,
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;                  /* matches your h1 margin-bottom */
+    background: linear-gradient(90deg, var(--bar-aqua), var(--bar-pink));
+    border-radius: 999px;             /* pill */
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset,
+                0 4px 12px rgba(31,48,56,.08);
+}
+
+
+h1::after { width: 72px; height: 8px; }
+h2::after { width: 48px; height: 6px; }
+
+
+/* ensure h2 has the same bottom margin so the bar doesn’t collide with text */
+h2 { margin-bottom: 0.5rem; }
+
+
+@media (max-width: 480px) {
+    h1::after{ width: 56px; height: 6px; }
+}
+
+
+
