@@ -1,0 +1,28 @@
+SASS DEMO SETUP INSTRUCTIONS
+
+1. Install Node.js from https://nodejs.org
+2. Open this folder (sass) in Visual Studio Code.
+3. Open a terminal inside VS Code.
+4. Run: npm install
+   (This installs Sass, PostCSS, and Autoprefixer locally.)
+5. To start the Sass compiler in terminal, run:
+   npm run sass
+6. To preview the page, install the Live Server extension and right-click index.html → "Open with Live Server".
+
+
+🔍 Teaching notes
+
+clip-path adds a decorative polygon shape background — perfect for teaching modern CSS features.
+
+color-token(primary) assumes you’ve defined a Sass map and helper function earlier:
+
+@use "sass:map";
+$colors: (primary: #0a3c7d, accent: #f0b429);
+@function color-token($name) { @return map.get($colors, $name); }
+
+
+inset: 0 is a modern shorthand for top: 0; right: 0; bottom: 0; left: 0;
+
+position: relative on body ensures the absolutely positioned background sits correctly behind content.
+
+The header a block demonstrates how to use variables, pseudo-classes (&:hover), and text transforms together.
