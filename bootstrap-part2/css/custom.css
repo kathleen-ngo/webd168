@@ -1,0 +1,212 @@
+/* --- Global background: soft pastel gradient --- */
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 0% 0%, #bfdbfe 0, transparent 45%),
+    radial-gradient(circle at 100% 0%, #f9a8d4 0, transparent 45%),
+    radial-gradient(circle at 50% 100%, #a5b4fc 0, #e5e7eb 55%);
+  background-color: #e5e7eb;
+}
+
+/* --- HERO / BANNER STYLING --- */
+/* Make the top banner feel like a real hero section */
+header.bg-secondary.bg-gradient.text-white {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0 5rem;
+  background: radial-gradient(circle at top left, #4f46e5, #0ea5e9 40%, #22c55e 90%);
+  text-align: center;
+}
+
+/* Soft glow circle inside the banner */
+header.bg-secondary.bg-gradient.text-white::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.36), transparent 70%);
+  top: -40px;
+  right: -120px;
+  opacity: 0.9;
+}
+
+/* Subtle angled shape at the bottom of the banner */
+header.bg-secondary.bg-gradient.text-white::after {
+  content: "";
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -80px;
+  height: 180px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.12),
+    rgba(15, 23, 42, 0)
+  );
+  transform: rotate(-2.5deg);
+}
+
+/* Title + subtitle styling */
+header.bg-secondary.bg-gradient.text-white h1.fw-bolder {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(2.4rem, 3vw + 1.4rem, 3.4rem);
+  letter-spacing: 0.03em;
+  text-shadow: 0 10px 30px rgba(15, 23, 42, 0.45);
+}
+
+header.bg-secondary.bg-gradient.text-white p.lead {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0.75rem auto 1.5rem;
+  font-size: 1.05rem;
+  opacity: 0.96;
+}
+
+/* Call-to-action button in hero */
+header.bg-secondary.bg-gradient.text-white .btn-lg {
+  position: relative;
+  z-index: 1;
+  border-radius: 999px;
+  padding-inline: 2.25rem;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.35);
+  border: none;
+  font-weight: 600;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+header.bg-secondary.bg-gradient.text-white .btn-lg:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+  background-color: #e5e7eb;
+}
+
+/* --- SECTIONS: GLASSY CARDS ON THE BACKGROUND --- */
+section {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  margin: 1.2rem auto;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+  max-width: 1100px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+}
+
+/* Color accent strip on top of each section */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 140%;
+  height: 4px;
+  background: linear-gradient(90deg, #22c55e, #06b6d4, #6366f1, #a855f7);
+  opacity: 0.9;
+  transform: translateX(-10%);
+  transition: transform 0.9s ease;
+}
+
+section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.28);
+  border-color: rgba(129, 140, 248, 0.7);
+}
+
+section:hover::before {
+  transform: translateX(0%);
+}
+
+/* --- TABLE / SKILLS SECTION STYLING --- */
+/* Make the inventory table look like a styled component */
+.inventory {
+  background: rgba(248, 250, 252, 0.95);
+  border-radius: 0.9rem;
+  overflow: hidden;
+}
+
+/* Header row with gradient and cleaner look */
+.inventory thead tr {
+  background: linear-gradient(135deg, #4f46e5, #6366f1, #0ea5e9);
+}
+
+.inventory thead th {
+  border-bottom: none;
+  color: #f9fafb;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+/* Table body rows */
+.inventory tbody tr {
+  transition: background-color 0.16s ease, transform 0.16s ease;
+}
+
+.inventory tbody tr:nth-child(odd) {
+  background-color: #f9fafb;
+}
+
+.inventory tbody tr:nth-child(even) {
+  background-color: #eff6ff;
+}
+
+.inventory tbody tr:hover {
+  background-color: #e0e7ff;
+  transform: translateY(-1px);
+}
+
+/* Cell padding + alignment */
+.inventory td {
+  vertical-align: middle;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+/* Center the rating stars and keep them on one line */
+.inventory .rating {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Slightly larger stars in the skills table */
+.inventory .rating i {
+  font-size: 1.1rem;
+}
+
+/* Table caption stays above table */
+caption {
+  caption-side: top;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+/* --- Small screen adjustments --- */
+@media (max-width: 768px) {
+  header.bg-secondary.bg-gradient.text-white {
+    padding: 4.5rem 0 3.5rem;
+  }
+
+  section {
+    margin: 0.8rem 0.6rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.22);
+    border-radius: 0.85rem;
+  }
+
+  section:hover {
+    transform: none; /* reduce motion on tiny screens */
+  }
+}
+
+/*# sourceMappingURL=custom.css.map */
