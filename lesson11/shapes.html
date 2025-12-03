@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Shapes Demo</title>
+
+  <!-- Reuse your main styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Simple layout wrapper for the shapes demo */
+    .shape-page {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: var(--sky);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .shape-page h1 {
+      margin-top: 0;
+      text-align: center;
+      color: var(--sky-accent);
+    }
+
+    .shape-demo-text {
+      font-size: 1rem;
+    }
+
+    /* Circle image with text wrapping using CSS Shapes */
+    .shape-photo {
+      float: left;
+      width: 260px;
+      height: 260px;
+      margin: 0 1.5rem 1rem 0;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #9fe2bf;
+      box-shadow: var(--shadow);
+
+      /* CSS Shapes: circle shape outside; text wraps around it */
+      shape-outside: circle(50%);
+      clip-path: circle(50%);
+      shape-margin: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .shape-photo {
+        float: none;
+        display: block;
+        margin: 0 auto 1rem auto;
+        shape-outside: none;   /* fallback on small screens */
+        clip-path: circle(50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shape-page">
+    <h1>CSS Shapes Demo</h1>
+    <img
+      src="images/webd_nature.jpg"
+      alt="Soft green forest with light through leaves"
+      class="shape-photo"
+      width="260"
+      height="260"
+      loading="lazy"
+    />
+    <p class="shape-demo-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at mauris
+      id ligula eleifend volutpat. Nam mollis, arcu et porttitor laoreet, nisl
+      ipsum aliquet sapien, vel imperdiet magna neque nec justo. Vivamus
+      ultricies, odio ac hendrerit bibendum, massa arcu tempor felis, sed
+      suscipit ipsum felis sed sapien. Vestibulum ante ipsum primis in faucibus
+      orci luctus et ultrices posuere cubilia curae; Vestibulum a aliquam
+      mauris. Integer pellentesque justo fringilla risus molestie, ac interdum
+      eros elementum. Pellentesque vel nunc at mi viverra interdum. Pellentesque
+      dignissim urna sit amet urna hendrerit, id congue justo volutpat.
+    </p>
+    <p class="shape-demo-text">
+      Etiam tempor nec neque ac cursus. Suspendisse potenti. Donec luctus, neque
+      non rutrum posuere, magna leo faucibus orci, vitae accumsan quam tortor
+      quis ex. Praesent tincidunt, nisl eget aliquet imperdiet, erat enim
+      consectetur est, eu aliquet lorem arcu non neque. Duis in hendrerit mi.
+      Aliquam erat volutpat. Duis sed fermentum erat, gravida egestas nulla.
+      Aliquam tristique interdum tortor, a fermentum lectus tempor et.
+    </p>
+  </main>
+</body>
+</html>
