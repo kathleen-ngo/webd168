@@ -1,0 +1,568 @@
+/* ===== Theme & layout variables ===== */
+:root {
+    --ink: #172523;           /* main text color on light backgrounds */
+    --muted: #51635d;         /* softer supporting text */
+    --paper: #fbfbfd;         /* neutral page background */
+  
+    /* pastel card themes used on some panels */
+    --mint: #effcf3;
+    --blush: #fff1f5;
+    --sky: #edf7ff;
+    --sand: #fff8ed;
+    --lavender: #f6f2ff;
+  
+    /* accent colors tuned for better contrast on headings */
+    --mint-accent: #2b8f5f;
+    --blush-accent: #d93b6a;
+    --sky-accent: #1d73c4;
+    --sand-accent: #c36b24;
+    --lavender-accent: #7c5af9;
+  
+    --shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    --ring: #7fdab5;
+  
+    /* layout spacing */
+    --container-max: 1040px;
+    --section-gap: 1.4rem;
+    --card-pad: clamp(1rem, 2.4vw, 1.5rem);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #ecfff5;
+      --muted: #cfe3db;
+      --paper: #0a1211;
+      --mint: #0d2418;
+      --blush: #2a1620;
+      --sky: #0e1c29;
+      --sand: #271a0b;
+      --lavender: #1c1830;
+      --mint-accent: #6ed6a3;
+      --blush-accent: #ff9dc0;
+      --sky-accent: #88c4ff;
+      --sand-accent: #f7b777;
+      --lavender-accent: #b39cff;
+      --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      --ring: #66e2ad;
+    }
+  
+    /* dark-mode tweak for diamond marker styling */
+    .leaf-list li::before {
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    }
+  }
+  
+  /* ===== base ===== */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 1rem; /* base text in rem for responsiveness */
+    background: radial-gradient(circle at top left, #020617 0, #020617 40%, #020617 100%);
+  }
+  
+  /* ===== accessibility: skip link ===== */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  
+  .skip-link:focus {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    padding: 0.6rem 0.9rem;
+    background: #ffffff;
+    color: var(--ink);
+    border: 2px solid var(--mint-accent);
+    border-radius: 0.6rem;
+    z-index: 1000;
+  }
+  
+  /* ===== older card styles (still used for portfolio cards) ===== */
+  .card {
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: var(--card-pad);
+    position: relative;
+  }
+  
+  .card + .card {
+    margin-top: var(--section-gap);
+  }
+  
+  .section-title {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.25rem, 3.1vw, 1.6rem);
+  }
+  
+  /* Section themes */
+  .theme-mint {
+    background: var(--mint);
+    border-color: var(--mint-accent);
+  }
+  .theme-mint .section-title {
+    color: var(--mint-accent);
+  }
+  
+  .theme-blush {
+    background: var(--blush);
+    border-color: var(--blush-accent);
+  }
+  .theme-blush .section-title {
+    color: var(--blush-accent);
+  }
+  
+  .theme-sky {
+    background: var(--sky);
+    border-color: var(--sky-accent);
+  }
+  .theme-sky .section-title {
+    color: var(--sky-accent);
+  }
+  
+  .theme-sand {
+    background: var(--sand);
+    border-color: var(--sand-accent);
+  }
+  .theme-sand .section-title {
+    color: var(--sand-accent);
+  }
+  
+  .theme-lavender {
+    background: var(--lavender);
+    border-color: var(--lavender-accent);
+  }
+  .theme-lavender .section-title {
+    color: var(--lavender-accent);
+  }
+  
+  /* Leaf list bullets (optional reuse) */
+  .leaf-list {
+    list-style: none;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .leaf-list li {
+    display: grid;
+    grid-template-columns: 12px 1fr;
+    gap: 0.5rem;
+    align-items: flex-start;
+    margin: 0.45rem 0;
+  }
+  
+  .leaf-list li::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    transform: rotate(45deg);
+    background: linear-gradient(135deg, var(--mint-accent), var(--sky-accent));
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06) inset;
+  }
+  
+  /* ===== Footer base (used across pages) ===== */
+  .site-footer {
+    border-top: 1px solid rgba(148, 163, 184, 0.45);
+    padding: 1.5rem 1rem 2.5rem;
+    text-align: center;
+    background: #020617;
+  }
+  
+  /* ===== Focus ring for keyboard navigation ===== */
+  :where(a, button, [tabindex]):focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+  
+  /* ===== Final project additions: layout, cards, and fun effects ===== */
+  
+  /* Outer layout shell that keeps content centered on larger screens */
+  .page-shell {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+  }
+  
+  /* Big rounded panel used as the main “window” on each page */
+  .window-panel {
+    border-radius: 1.75rem;
+    padding: 2rem 1.5rem 2.5rem;
+    background: radial-gradient(circle at top left, #fdf2ff 0, #fdfbff 40%, #f3f8ff 100%);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+  }
+  
+  /* Subtle grid-paper style background inspired by your example screenshots */
+  .grid-paper-bg {
+    background-image:
+      linear-gradient(90deg, rgba(148, 163, 184, 0.15) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* Shared heading styles */
+  .section-heading {
+    font-family: "Fredoka", system-ui, sans-serif;
+    letter-spacing: 0.04em;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #1f2937;
+  }
+  
+  .section-lead {
+    margin-top: 0.4rem;
+    font-size: 1rem;
+    color: #4b5563;
+    max-width: 44rem;
+  }
+  
+  /* Navigation link styling (used in all navbars) */
+  .nav-link {
+    position: relative;
+    padding: 0.25rem 0.1rem;
+    color: rgba(226, 232, 240, 0.82);
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15rem;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #6366f1, #ec4899);
+    transition: width 0.25s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .nav-link-active {
+    color: #ffffff;
+  }
+  .nav-link-active::after {
+    width: 100%;
+  }
+  
+  /* Small pastel chips for hero + skill tags */
+  .hero-chip {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+  
+  .hero-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(148, 163, 184, 0.55);
+  }
+  
+  .mini-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.88);
+    color: #4b5563;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+  }
+  
+  /* Skill “pill” cards on the home page */
+  .skill-pill {
+    border-radius: 1.25rem;
+    padding: 1.1rem 1.3rem;
+    background: linear-gradient(135deg, #e0ecff, #fef3ff);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .skill-pill h3 {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4c1d95;
+    margin: 0 0 0.2rem;
+  }
+  
+  .skill-level {
+    font-weight: 600;
+    color: #111827;
+    font-size: 0.95rem;
+  }
+  
+  .skill-detail {
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    color: #4b5563;
+  }
+  
+  .skill-pill:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.22);
+  }
+  
+  /* Fun fact cards — pastel blocks with emoji and hover lift */
+  .funfact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    border-radius: 1.25rem;
+    padding: 1rem 1.15rem;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    box-shadow: 0 10px 24px rgba(148, 163, 184, 0.5);
+    font-size: 0.95rem;
+    color: #1f2937;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .funfact-card span {
+    font-size: 1.4rem;
+  }
+  
+  .funfact-card:hover {
+    transform: translateY(-4px) rotate(-0.4deg);
+    box-shadow: 0 18px 32px rgba(148, 163, 184, 0.85);
+  }
+  
+  /* Portfolio filter pills */
+  .filter-pill {
+    border-radius: 999px;
+    border: 1px solid rgba(129, 140, 248, 0.7);
+    padding: 0.4rem 0.95rem;
+    background: rgba(15, 23, 42, 0.7);
+    color: #e5e7eb;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .filter-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.6);
+  }
+  
+  .filter-pill.filter-active {
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    color: #ffffff;
+  }
+  
+  /* Portfolio meta text */
+  .portfolio-kicker {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6b21a8;
+  }
+  
+  /* Contact page stylings */
+  .info-pill {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.8rem 1rem;
+    border-radius: 1.1rem;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(192, 132, 252, 0.6);
+  }
+  
+  .info-pill span {
+    font-size: 1.3rem;
+  }
+  
+  .info-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #f9a8d4;
+  }
+  
+  .info-link {
+    font-size: 0.9rem;
+    color: #e0f2fe;
+    text-decoration: underline;
+  }
+  
+  .info-note {
+    font-size: 0.9rem;
+    color: #e5e7eb;
+  }
+  
+  /* Contact card “chat bubble” */
+  .contact-card {
+    position: relative;
+    border-radius: 1.7rem;
+    padding: 1.5rem 1.4rem 1.9rem;
+    background: linear-gradient(135deg, #fef3ff, #e0f2fe);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.4);
+    color: #111827;
+  }
+  
+  /* Floating badge on the contact card */
+  .contact-orbit {
+    position: absolute;
+    right: 1.2rem;
+    top: -0.9rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+    background: #6366f1;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(129, 140, 248, 0.9);
+  }
+  
+  /* Form fields styled to feel soft and clickable */
+  .form-label {
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b21a8;
+  }
+  
+  .form-input {
+    width: 100%;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(148, 163, 184, 0.9);
+    padding: 0.55rem 0.8rem;
+    font-size: 0.9rem;
+    color: #111827;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .form-input:focus-visible {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.7);
+    background-color: #ffffff;
+  }
+  
+  /* Primary button reused on multiple pages */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-image: linear-gradient(to right, #6366f1, #ec4899);
+    box-shadow: 0 14px 30px rgba(129, 140, 248, 0.7);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(129, 140, 248, 0.9);
+    filter: brightness(1.03);
+  }
+  
+  /* Ensure card text is left-aligned and high-contrast */
+  .card,
+  .card p,
+  .card ul,
+  .card li,
+  .card figcaption {
+    color: var(--ink);
+    opacity: 1;
+    text-align: left;
+  }
+/* ============================================
+   High-contrast adjustments (accessibility pass)
+   ============================================ */
+
+/* Base text on dark background: brighter & clearer */
+body,
+body .grid-section,
+body .grid-section p,
+body .grid-section h1,
+body .grid-section h2,
+body .grid-section h3 {
+  color: #e5e7eb; /* light slate */
+}
+
+/* Hero heading + lead on the black/grid background */
+.hero-heading {
+  color: #f9fafb;           /* almost pure white */
+}
+
+.hero-lead {
+  color: #e5e7eb;           /* light but still high contrast */
+}
+
+/* Section headings / intro text on dark areas */
+.section-heading,
+.section-intro,
+.section-intro p {
+  color: #f9fafb;
+}
+
+/* Light cards: switch to DARK text so white-on-light goes away */
+.surface-light,
+.project-card,
+.fun-card,
+.contact-card {
+  color: #020617;           /* very dark navy */
+}
+
+/* If any elements inside cards still force white/very light text,
+   override them so they become dark and readable. */
+.surface-light .text-white,
+.project-card .text-white,
+.fun-card .text-white,
+.contact-card .text-white,
+.surface-light .text-slate-200,
+.project-card .text-slate-200,
+.fun-card .text-slate-200,
+.contact-card .text-slate-200 {
+  color: #020617 !important;
+}
+
+/* Buttons keep strong contrast */
+.btn-primary {
+  color: #f9fafb;
+}
+
+.btn-ghost {
+  color: #e5e7eb;
+}
+
+/* Portfolio filter pills: easier to see on the dark background */
+.filter-pill {
+  color: #e5e7eb;
+  background-color: rgba(15, 23, 42, 0.9); /* dark pill */
+}
+
+.filter-pill--active {
+  color: #0b1120; /* dark text on bright gradient pill */
+}
