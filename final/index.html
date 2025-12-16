@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Kathleen Ngo • Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Kathleen Ngo – frontend, cybersecurity, and research." />
+
+  <!-- Google Fonts for a friendly, modern vibe -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CDN (utility classes, mobile-first, rem-based) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    /* Tailwind config to extend colors + shadows for the pastel theme */
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'k-ink': '#111827',
+            'k-cream': '#fdfaf5',
+            'k-yellow': '#fde68a',
+            'k-lilac': '#e9d5ff',
+            'k-sky': '#dbeafe',
+            'k-rose': '#fee2e2',
+          },
+          boxShadow: {
+            'soft-card': '0 18px 40px rgba(15, 23, 42, 0.16)',
+            'glow': '0 0 40px rgba(129, 140, 248, 0.65)',
+          },
+          borderRadius: {
+            'xl2': '1.5rem',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Your custom (Sass-compiled) CSS for shared styles and GSAP helpers -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-50 font-[Nunito,system-ui]">
+  <!-- Accessible skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Sticky navigation with hamburger -->
+  <header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur border-b border-purple-500/40">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+      <!-- Logo / name chip -->
+      <a href="index.html" class="inline-flex items-center gap-2">
+        <span
+          class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-4 py-1.5 text-sm font-semibold tracking-wide text-white shadow-soft-card"
+        >
+          <span class="text-lg">🌸</span>
+          <span>Kathleen Ngo</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden items-center gap-4 text-sm font-medium md:flex" aria-label="Main navigation">
+        <a href="index.html" class="nav-link nav-link-active">Home</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Mobile hamburger button -->
+      <button
+        type="button"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-purple-400/70 text-purple-100 md:hidden"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        data-nav-toggle
+      >
+        <span class="sr-only">Open navigation</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+          <path d="M4 7.5h16M4 12h16M4 16.5h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile nav menu -->
+    <nav
+      class="hidden border-t border-purple-500/40 bg-slate-950/95 md:hidden"
+      data-nav-menu
+      aria-label="Mobile navigation"
+    >
+      <div class="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-3 text-sm font-medium">
+        <a href="index.html" class="nav-link nav-link-active">Home</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main id="main-content" class="flex-1">
+    <div class="page-shell">
+      <!-- Hero / intro section -->
+      <section
+        id="home-hero"
+        class="window-panel grid-paper-bg reveal-section"
+        aria-labelledby="home-heading"
+      >
+        <div class="grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-center">
+          <!-- Text column -->
+          <div class="space-y-4">
+            <p
+              class="hero-chip inline-flex items-center gap-2 rounded-full bg-k-lilac/70 px-4 py-1 text-xs font-semibold text-purple-900"
+            >
+              <span>✨</span>
+              <span>Frontend • Cybersecurity • Research</span>
+            </p>
+
+            <h1
+              id="home-heading"
+              class="hero-heading text-3xl leading-tight text-slate-900 sm:text-4xl md:text-5xl font-[Fredoka]"
+            >
+              Building playful, accessible web experiences.
+            </h1>
+
+            <p class="hero-subtitle max-w-xl text-base text-slate-700 sm:text-lg">
+              Hello, I’m Kathleen — a computer science student who loves solving problems at the intersection of
+              <strong>web development</strong>, <strong>cybersecurity</strong>, and <strong>AI</strong>. I enjoy
+              turning ideas into interfaces, making sites feel welcoming and intuitive, and designing experiences that
+              are both beautiful and accessible for every user.
+            </p>
+
+            <div class="flex flex-wrap gap-3 pt-1">
+              <a
+                href="portfolio.html"
+                class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 px-5 py-2.5 text-sm font-semibold text-white shadow-soft-card transition hover:-translate-y-0.5 hover:shadow-glow"
+              >
+                View my work
+              </a>
+              <a
+                href="#fun-facts"
+                class="hero-chip inline-flex items-center justify-center rounded-full border border-purple-300/80 bg-white/70 px-4 py-2 text-sm font-medium text-purple-900 transition hover:bg-purple-50"
+              >
+                🧩 Fun facts about me
+              </a>
+            </div>
+          </div>
+
+          <!-- Visual / portrait column -->
+          <div class="relative flex justify-center md:justify-end">
+            <div
+              class="relative h-64 w-64 overflow-hidden rounded-[2rem] bg-gradient-to-tr from-indigo-300 via-sky-200 to-amber-200 shadow-glow"
+            >
+              <!-- Replace with your portrait image -->
+              <img
+                src="images/webd_portrait.jpg"
+                alt="Portrait of Kathleen smiling outdoors."
+                class="h-full w-full object-cover"
+              />
+            </div>
+
+            <!-- Floating badge -->
+            <div class="hero-chip absolute -bottom-4 -left-2">
+              <div
+                class="inline-flex items-center gap-2 rounded-2xl bg-slate-900/90 px-4 py-2 text-xs font-medium text-slate-50 shadow-soft-card"
+              >
+                <span>💻</span>
+                <span>I love clean, thoughtful UI.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills & tech stack -->
+      <section id="skills" class="mt-10 reveal-section" aria-labelledby="skills-heading">
+        <h2 id="skills-heading" class="section-heading">Skills & Tech Stack</h2>
+        <p class="section-lead">
+          I work across the full stack, but I’m especially drawn to the visual side of engineering. My current toolkit
+          combines HTML, CSS, JavaScript, and Tailwind with experience in cybersecurity, networking, and machine
+          learning. I love polishing small details that make interfaces feel calm, friendly, and easy to use.
+        </p>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          <!-- Language group -->
+          <article class="skill-pill stat-pill">
+            <h3>Programming</h3>
+            <p class="skill-level">JavaScript • Python • C • C++ • Swift</p>
+            <p class="skill-detail">Comfortable writing front-end apps, scripting, and systems code.</p>
+          </article>
+
+          <!-- Systems / security -->
+          <article class="skill-pill stat-pill">
+            <h3>Systems & Security</h3>
+            <p class="skill-level">Cybersecurity • Networking • Linux</p>
+            <p class="skill-detail">Experience reading logs, building secure flows, and thinking like a defender.</p>
+          </article>
+
+          <!-- Data / AI -->
+          <article class="skill-pill stat-pill">
+            <h3>Data & AI</h3>
+            <p class="skill-level">ML & AI • NLP • LLMs</p>
+            <p class="skill-detail">Research experience with language models and structured data pipelines.</p>
+          </article>
+        </div>
+
+        <!-- Cute sub-row of “skill badges” with motion -->
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="mini-badge hero-chip">🌐 Responsive web layouts</span>
+          <span class="mini-badge hero-chip">🔒 Secure-by-design thinking</span>
+          <span class="mini-badge hero-chip">🧪 Research & experimentation</span>
+          <span class="mini-badge hero-chip">🤝 Human-centered collaboration</span>
+        </div>
+      </section>
+
+      <!-- Fun facts -->
+      <section id="fun-facts" class="mt-10 reveal-section" aria-labelledby="funfacts-heading">
+        <h2 id="funfacts-heading" class="section-heading">Fun Facts About Me 🎀</h2>
+        <p class="section-lead">
+          Outside of coding, I recharge with quiet hobbies and little creative projects. These fun facts capture the
+          parts of me that don’t fit on a traditional resume but definitely shape how I learn, design, and solve
+          problems.
+        </p>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-2">
+          <article class="funfact-card">
+            <span aria-hidden="true">🧩</span>
+            <p>
+              I love puzzles, Sudoku, and brain games. I genuinely enjoy sitting down with a tricky challenge and
+              slowly working it out piece by piece until everything finally clicks into place.
+            </p>
+          </article>
+
+          <article class="funfact-card">
+            <span aria-hidden="true">🎨</span>
+            <p>
+              I sketch buildings, landscapes, and little interface ideas in a notebook. Drawing helps me think about
+              layout, balance, and composition before I ever touch a code editor.
+            </p>
+          </article>
+
+          <article class="funfact-card">
+            <span aria-hidden="true">🌲</span>
+            <p>
+              Hiking different trails and national parks is one of my favorite ways to reset. Being outdoors gives me
+              quiet time to reflect and come back to my projects with fresh energy and perspective.
+            </p>
+          </article>
+
+          <article class="funfact-card">
+            <span aria-hidden="true">☕</span>
+            <p>
+              I’m always searching for new coffee and food spots. I love finding cozy spaces where I can combine good
+              drinks, good playlists, and a few hours of focused coding or reading.
+            </p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Shared footer -->
+  <footer class="site-footer">
+    <p class="text-sm text-slate-300">
+      © <span id="year"></span> Kathleen Ngo · Built with HTML, Tailwind CSS, JavaScript, and GSAP.
+    </p>
+  </footer>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Your main JS for nav + animations -->
+  <script src="js/main.js" defer></script>
+</body>
+</html>
